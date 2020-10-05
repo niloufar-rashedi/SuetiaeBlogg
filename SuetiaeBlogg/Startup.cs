@@ -26,9 +26,13 @@ namespace SuetiaeBlogg
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(
+            //        Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<SuetiaeBloggDbContext>(options =>
+               options.UseSqlServer(
+                   Configuration.GetConnectionString("SuetiaeBloggContext") 
+                   ));
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -49,6 +53,9 @@ namespace SuetiaeBlogg
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddDbContext<SuetiaeBloggContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("SuetiaeBloggContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
