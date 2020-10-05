@@ -14,6 +14,7 @@ namespace SuetiaeBlogg.Data
         {
         }
 
-        public DbSet<SuetiaeBlogg.Models.Post> Post { get; set; }
+        public DbSet<Post> Post { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }
