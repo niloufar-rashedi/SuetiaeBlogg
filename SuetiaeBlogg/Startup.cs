@@ -39,6 +39,8 @@ namespace SuetiaeBlogg
             services.AddAuthentication()
                 .AddIdentityServerJwt();
 
+            services.AddSwaggerGen();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
 
@@ -67,7 +69,8 @@ namespace SuetiaeBlogg
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/Swagger/v1/swagger.json", "BloggAPI v1"); });
             app.UseRouting();
 
             app.UseAuthentication();
