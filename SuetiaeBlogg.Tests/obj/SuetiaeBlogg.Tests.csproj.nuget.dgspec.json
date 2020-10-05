@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mr.X\\Source\\Repos\\SuetiaeBlogg\\SuetiaeBlogg.Tests\\SuetiaeBlogg.Tests.csproj": {}
+    "C:\\Users\\nilou\\MyFolders\\ITHogskolan\\ITHS\\Uppgift_6\\SuetiaeBlogg.Tests\\SuetiaeBlogg.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mr.X\\Source\\Repos\\SuetiaeBlogg\\SuetiaeBlogg.Tests\\SuetiaeBlogg.Tests.csproj": {
+    "C:\\Users\\nilou\\MyFolders\\ITHogskolan\\ITHS\\Uppgift_6\\SuetiaeBlogg.Tests\\SuetiaeBlogg.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mr.X\\Source\\Repos\\SuetiaeBlogg\\SuetiaeBlogg.Tests\\SuetiaeBlogg.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\nilou\\MyFolders\\ITHogskolan\\ITHS\\Uppgift_6\\SuetiaeBlogg.Tests\\SuetiaeBlogg.Tests.csproj",
         "projectName": "SuetiaeBlogg.Tests",
-        "projectPath": "C:\\Users\\Mr.X\\Source\\Repos\\SuetiaeBlogg\\SuetiaeBlogg.Tests\\SuetiaeBlogg.Tests.csproj",
-        "packagesPath": "C:\\Users\\Mr.X\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mr.X\\Source\\Repos\\SuetiaeBlogg\\SuetiaeBlogg.Tests\\obj\\",
+        "projectPath": "C:\\Users\\nilou\\MyFolders\\ITHogskolan\\ITHS\\Uppgift_6\\SuetiaeBlogg.Tests\\SuetiaeBlogg.Tests.csproj",
+        "packagesPath": "C:\\Users\\nilou\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nilou\\MyFolders\\ITHogskolan\\ITHS\\Uppgift_6\\SuetiaeBlogg.Tests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Mr.X\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\nilou\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -38,6 +42,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.5.0, )"
