@@ -11,6 +11,12 @@ using SuetiaeBlogg.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace SuetiaeBlogg
 {
@@ -35,7 +41,17 @@ namespace SuetiaeBlogg
                    ));
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+                services.AddMvc(options => {
+
+                var generalPolicy = new AuthorizationPolicyBuilder()
+                                           .RequireAuthenticatedUser()
+                                           .Build();
+                options.Filters.Add(new AuthorizeFilter(generalPolicy));
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+            });
+
 
             services.AddIdentityServer()
                 .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
@@ -47,7 +63,25 @@ namespace SuetiaeBlogg
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = "JwtBearer";
+                options.DefaultChallengeScheme = "JwtBearer";
+            })
+                .AddJwtBearer("JwtBearer", jwtBearerOptions =>
+                {
+                    jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MySecretKeyIsSecretDoNotTell")),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.FromMinutes(5)
+                    };
+                }
 
+                );
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
